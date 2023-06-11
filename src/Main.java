@@ -50,3 +50,4 @@ public class Main {
                         Collectors.summingDouble(Record::getTime)));
     }
 }
+
