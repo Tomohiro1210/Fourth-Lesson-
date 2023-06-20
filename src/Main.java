@@ -27,7 +27,7 @@ public class Main {
     }
 
     //メソッドで学習内容のなかにある記録の件数が何件か出力する。
-    private static Map<String, Long> dataCount(List<Note> records) {
+    private static Map<String, Long> countLearningTimesByContents(List<Note> records) {
         return records.stream().collect(Collectors.groupingBy(Note::getContents, Collectors.counting()));
     }
 }
