@@ -2,12 +2,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-//Recordクラスに対して学習内容と学習時間を入れて、同じ学習内容ごとに合計時間を算出して出力する
+//Noteクラスに対して学習内容と学習時間を入れて、同じ学習内容ごとに合計時間を算出して出力する
 public class Main {
     public static void main(String[] args) {
         List<Note> records = initializeRecords();
         Map<String, Double> totalTimePerContent = calculateTotalTimePerContent(records);
-        Map<String, Long> totalRecordsPerContent = dataCount(records);
+        Map<String, Long> totalRecordsPerContent = countLearningTimesByContents(records);
         System.out.println("本日の学習内容と学習時間：" + totalTimePerContent);
         System.out.println("学習内容別の登録件数：" + totalRecordsPerContent);
     }
@@ -27,7 +27,7 @@ public class Main {
     }
 
     //メソッドで学習内容のなかにある記録の件数が何件か出力する。
-    private static Map<String, Long> dataCount(List<Note> records) {
+    private static Map<String, Long> countLearningTimesByContents(List<Note> records) {
         return records.stream().collect(Collectors.groupingBy(Note::getContents, Collectors.counting()));
     }
 }
